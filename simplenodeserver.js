@@ -65,7 +65,7 @@ server.listen(port, (err) => {
 //   }
 // }
 
-const csp = require(`helmet-csp`)
+const csp = require(`helmet-csp`);
 
 const express = require('express');
 const app = express();
