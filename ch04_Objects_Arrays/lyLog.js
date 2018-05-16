@@ -25,4 +25,4 @@ function phi(table) {
 
 }
 
-console.log(phi([76, 9, 4, 1]));
+//console.log(phi([76, 9, 4, 1]));
