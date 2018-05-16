@@ -41,11 +41,19 @@ function runBoth(whichFunc1, whichFunc2) {
 	callFunc(whichFunc2);
 }
 
-function callFunc(whichFunc) {
+function callFunc() {
+	// brute force, save functions calling functions for later
 	let t0 = performance.now();
-	whichFunc(info);
+	isEven(10000);
 	let t1 = performance.now();
 	console.log(`That function call took ${t1 - t0} milliseconds.`);
+
+	let t2 = performance.now();
+	isEvenFast(10000);
+	let t3 = performance.now();
+	console.log(`That function call took ${t3 - t2} milliseconds.`);
+	//That function call took 1.4999999984866008 milliseconds.
+	//That function call took 0.09999999747378752 milliseconds.
 }
 
 function someFunc(info) {
