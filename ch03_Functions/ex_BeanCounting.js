@@ -27,3 +27,6 @@ function countChar(string, whichChar) {
 	}
 	console.log(`There are ${finalCount} ${whichChar}'s in the string.`)
 }
+
+countBs("This is a test of the B letter in the Bound String BBB");
+countChar("This test is The besT TesT in the wesT!", "T");
