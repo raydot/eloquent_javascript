@@ -16,7 +16,10 @@ function twoWayRange(start, end, step) {
 	let result = [];
 
 	//error handle a bad number entry...
-	if ( ((step > 1) && (end < start)) || ((step < 1) && (start < end)) ) {
+	if (step == 0) {
+		console.log("Step cannot be zero!");
+		return;
+	} else if ( ((step > 1) && (end < start)) || ((step < 1) && (start < end)) ) {
 		console.log("Usage: twoWayRange(start, end, step)");
 		return;
 	}
@@ -29,9 +32,6 @@ function twoWayRange(start, end, step) {
 		for (let i = start; i <= end; i += step) {
 			result.push(i);
 		}
-	} else {
-		console.log("Step cannot be zero.");
-		return;
 	}
 	console.log(result);
 }
@@ -41,3 +41,4 @@ twoWayRange(1, 10, 2);
 twoWayRange(10, 1, -2);
 twoWayRange(10, 20, -2);
 twoWayRange(10, 30, 0);
+twoWayRange(5, 2, -1);
