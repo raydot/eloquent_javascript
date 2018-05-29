@@ -11,10 +11,13 @@ function reverseArray(whichArray){ //this works!
 	return newArray;
 }
 
-function reverseArrayInPlace(whichArray){
+function reverseArrayInPlace(whichArray){  //this works!
 	let stopPoint = whichArray.length / 2;
+	let relLength = whichArray.length;
 	for (let i = 0; i < stopPoint; i++) {
-		whichArray.unshift(whichArray.pop());
+		let temp = whichArray[i];
+		whichArray[i] = whichArray[--relLength];
+		whichArray[relLength] = temp;
 	}
 	return whichArray;
 }
@@ -23,6 +26,9 @@ function reverseArrayInPlace(whichArray){
 console.log('reverse array: ' + reverseArray(["A", "B", "C"]));
 // → ["C", "B", "A"];
 let arrayValue = [1, 2, 3, 4, 5];
+reverseArrayInPlace(arrayValue);
+console.log(arrayValue);
+arrayValue = [1, 2, 3, 4, 5, 6, 7];
 reverseArrayInPlace(arrayValue);
 console.log(arrayValue);
 // → [5, 4, 3, 2, 1]
