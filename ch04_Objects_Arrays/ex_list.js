@@ -7,7 +7,40 @@
 
 	If you haven’t already, also write a recursive version of nth.*/
 
-// Your code here.
+// do I declare a global list?
+
+
+function arrayToList(whichArray) {
+	// Build a list from an array
+	// hint: the list is recursive
+	// let list = {
+	//   value: 1,
+	//   rest: {
+	//     value: 2,
+	//     rest: {
+	//       value: 3,
+	//       rest: null
+	//     }
+	//   }
+	// };
+}
+
+function listToArray(whichList) {
+	// Build an array from a list
+
+}
+
+function prepend(whichElement, whichList) {
+	// take an element and a list and add the element to the front of the list
+
+}
+
+function nth (whichList, itemNum) {
+	// take a list and a number and return the element at the given position in the list
+	// zero = first element, undefined = no such element
+
+}
+
 
 console.log(arrayToList([10, 20]));
 // → {value: 10, rest: {value: 20, rest: null}}
