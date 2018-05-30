@@ -23,6 +23,23 @@ function arrayToList(whichArray) {
 	//     }
 	//   }
 	// };
+
+	// error check for array?
+
+
+	let outList = [];
+
+	// BORING!  Let's use foreach!
+	//for (let i = 0; i < whichArray.length; i++) {
+		//outList
+	//}
+	whichArray.foreach(function(item) {
+		// just pushing doesn't nest!
+		// case for recursion?!
+		outList.push(item);
+	});
+
+	return outList;
 }
 
 function listToArray(whichList) {
@@ -42,7 +59,7 @@ function nth (whichList, itemNum) {
 }
 
 
-console.log(arrayToList([10, 20]));
+console.log(`arrayToList([10, 20])): {arrayToList([10, 20])}`);
 // → {value: 10, rest: {value: 20, rest: null}}
 console.log(listToArray(arrayToList([10, 20, 30])));
 // → [10, 20, 30]

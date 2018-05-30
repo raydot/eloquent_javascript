@@ -23,7 +23,7 @@ function reverseArrayInPlace(whichArray){  //this works!
 }
 
 // TEST CASES
-console.log('reverse array: ' + reverseArray(["A", "B", "C"]));
+console.log(`reverse array: ${reverseArray(["A", "B", "C"])}`);
 // → ["C", "B", "A"];
 let arrayValue = [1, 2, 3, 4, 5];
 reverseArrayInPlace(arrayValue);
