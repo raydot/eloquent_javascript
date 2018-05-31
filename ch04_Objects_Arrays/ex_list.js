@@ -33,11 +33,25 @@ function arrayToList(whichArray) {
 	//for (let i = 0; i < whichArray.length; i++) {
 		//outList
 	//}
-	whichArray.foreach(function(item) {
+	//whichArray.foreach(function(item) {
 		// just pushing doesn't nest!
 		// case for recursion?!
-		outList.push(item);
-	});
+		// function that adds an item to the list, keep calling it!
+		// method of the object?
+	//	outList[item] = item;
+	//});
+
+
+	//CONFUSING!  Let's just use a for loop:
+	for (let i = 0; i < whichArray.length; i++) {
+		if (i < whichArray.length - 1) {
+			outList[whichArray[i]] = outList;
+			console.log(`outList: ${outList}`);
+		} else { // last element
+			outList[whichArray[i]] = null;
+			console.log("NULL!");
+		}
+	}
 
 	return outList;
 }
@@ -59,7 +73,7 @@ function nth (whichList, itemNum) {
 }
 
 
-console.log(`arrayToList([10, 20])): {arrayToList([10, 20])}`);
+console.log(`arrayToList([10, 20])): ${arrayToList([10, 20])}`);
 // → {value: 10, rest: {value: 20, rest: null}}
 console.log(listToArray(arrayToList([10, 20, 30])));
 // → [10, 20, 30]
