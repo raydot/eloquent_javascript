@@ -9,9 +9,8 @@
 
 // do I declare a global list?
 
-
-function arrayToList(whichArray) {
-	// Build a list from an array
+// expected output: 
+// Build a list from an array
 	// hint: the list is recursive
 	// let list = {
 	//   value: 1,
@@ -23,27 +22,18 @@ function arrayToList(whichArray) {
 	//     }
 	//   }
 	// };
+let counter = 0;
+
+function arrayToList(whichArray) {
+	
 
 	// error check for array?
 
 
 	let outList = [];
 
-	// BORING!  Let's use foreach!
-	//for (let i = 0; i < whichArray.length; i++) {
-		//outList
-	//}
-	//whichArray.foreach(function(item) {
-		// just pushing doesn't nest!
-		// case for recursion?!
-		// function that adds an item to the list, keep calling it!
-		// method of the object?
-	//	outList[item] = item;
-	//});
-
-
-	//CONFUSING!  Let's just use a for loop:
 	for (let i = 0; i < whichArray.length; i++) {
+		console.log(`i: ${i}`);
 		if (i < whichArray.length - 1) {
 			outList[whichArray[i]] = outList;
 			console.log(`outList: ${outList}`);
@@ -53,7 +43,9 @@ function arrayToList(whichArray) {
 		}
 	}
 
+	console.log(`++counter: ${++counter}`);
 	return outList;
+	//something is bananas here.  not sure what.  time for bed.
 }
 
 function listToArray(whichList) {
@@ -75,9 +67,9 @@ function nth (whichList, itemNum) {
 
 console.log(`arrayToList([10, 20])): ${arrayToList([10, 20])}`);
 // → {value: 10, rest: {value: 20, rest: null}}
-console.log(listToArray(arrayToList([10, 20, 30])));
+//console.log(listToArray(arrayToList([10, 20, 30])));
 // → [10, 20, 30]
-console.log(prepend(10, prepend(20, null)));
+//console.log(prepend(10, prepend(20, null)));
 // → {value: 10, rest: {value: 20, rest: null}}
-console.log(nth(arrayToList([10, 20, 30]), 1));
+//console.log(nth(arrayToList([10, 20, 30]), 1));
 // → 20
