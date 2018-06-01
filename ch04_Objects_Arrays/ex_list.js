@@ -36,9 +36,10 @@ function arrayToList(whichArray) {
 
 	for (let i = 0; i < whichArray.length; i++) {
 		console.log(`i: ${i}`);
-		if (i < whichArray.length - 1) {
-			outList[whichArray[i]] = outList;
-			console.log(`outList: ${outList}`);
+		if (i < (whichArray.length - 1) {
+			//outList[whichArray[i]] = outList;
+			//console.log(`outList: ${outList}`);
+			outlist.push( )
 		} else { // last element
 			outList[whichArray[i]] = null;
 			console.log("NULL!");
@@ -48,6 +49,7 @@ function arrayToList(whichArray) {
 //	console.log(`++counter: ${++counter}`);
 	return outList;
 	//something is bananas here.  not sure what.  time for bed.
+	//something about this I'm just not getting!
 }
 
 function listToArray(whichList) {
@@ -57,6 +59,7 @@ function listToArray(whichList) {
 
 function prepend(whichElement, whichList) {
 	// take an element and a list and add the element to the front of the list
+	whichList = whichElement[whichList];
 
 }
 
