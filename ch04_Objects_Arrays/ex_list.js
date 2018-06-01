@@ -22,7 +22,9 @@
 	//     }
 	//   }
 	// };
-let counter = 0;
+
+//let counter = 0;
+
 
 function arrayToList(whichArray) {
 	
@@ -43,7 +45,7 @@ function arrayToList(whichArray) {
 		}
 	}
 
-	console.log(`++counter: ${++counter}`);
+//	console.log(`++counter: ${++counter}`);
 	return outList;
 	//something is bananas here.  not sure what.  time for bed.
 }
