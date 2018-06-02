@@ -37,7 +37,7 @@
 //let counter = 0;
 
 
-function arrayToList(whichArray) {
+/*function arrayToList(whichArray) {
 	
 
 	// error check for array?
@@ -61,12 +61,22 @@ function arrayToList(whichArray) {
 	return outList;
 	//something is bananas here.  not sure what.  time for bed.
 	//something about this I'm just not getting!
-}
+}*/
 
 function listToArray(whichList) {
 	// Build an array from a list
+	// uno mas!
+
+	// if you pass a list to a for loop and then pop...?
+	// SCOPE YOU DUMB DUMB!
+	let ic = whichList.length;
+	let il = whichList;
+
+	//for (let i = 0; )
 
 }
+
+
 
 function prepend(whichElement, whichList) {
 	// take an element and a list and add the element to the front of the list
