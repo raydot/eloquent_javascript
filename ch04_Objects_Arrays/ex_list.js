@@ -63,16 +63,20 @@
 	//something about this I'm just not getting!
 }*/
 
-function listToArray(whichList) {
+let mainList = [];
+
+function listToArray(whichArray) {
 	// Build an array from a list
 	// uno mas!
 
 	// if you pass a list to a for loop and then pop...?
 	// SCOPE YOU DUMB DUMB!
-	let ic = whichList.length;
-	let il = whichList;
+	let ic = whichArray.length;
+	//let il = whichList;
 
-	//for (let i = 0; )
+	for (let i = ic; i >=0; i--) {
+		mainList.pop(mainList +////)  How do you get to the elements?!
+	}
 
 }
 
