@@ -19,6 +19,7 @@
 	*/
 
 // do I declare a global list?
+let masterList = [];
 
 // expected output: 
 // Build a list from an array
@@ -37,23 +38,25 @@
 //let counter = 0;
 
 
-/*function arrayToList(whichArray) {
+function arrayToList(whichArray) {
 	
 
 	// error check for array?
 
 
 	let outList = [];
+	let arLen = whichArray.length;
+	//let arLen
 
-	for (let i = 0; i < whichArray.length; i++) {
+	for (let i = 0; i < arLen; i++) {
 		console.log(`i: ${i}`);
-		if (i < (whichArray.length - 1) {
+		if (i < (arLen - 1)) {
 			//outList[whichArray[i]] = outList;
 			//console.log(`outList: ${outList}`);
-			outlist.push( )
+			outlist.push();
 		} else { // last element
 			outList[whichArray[i]] = null;
-			console.log("NULL!");
+			//console.log("NULL!");
 		}
 	}
 
@@ -61,9 +64,9 @@
 	return outList;
 	//something is bananas here.  not sure what.  time for bed.
 	//something about this I'm just not getting!
-}*/
+}
 
-let mainList = [];
+//let mainList = [];
 
 function listToArray(whichArray) {
 	// Build an array from a list
