@@ -1,0 +1,24 @@
+{
+  "name": "ch07_robotproject",
+  "version": "1.0.0",
+  "description": "Chapter 7 of Eloquent Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raydot/eloquent_javascript.git"
+  },
+  "keywords": [
+    "eloquent",
+    "Javascript",
+    "node"
+  ],
+  "author": "Dave Kanter",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/raydot/eloquent_javascript/issues"
+  },
+  "homepage": "https://github.com/raydot/eloquent_javascript#readme"
+}
