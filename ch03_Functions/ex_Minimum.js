@@ -11,7 +11,7 @@
 // }
 
 // Not sure when this was originally written but I can certainly
-// Improve
+// improve
 const retMin = (thingOne, thingTwo) => {
   return thingOne < thingTwo ? thingOne : thingTwo;
 };

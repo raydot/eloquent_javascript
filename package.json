@@ -1,0 +1,32 @@
+{
+  "name": "eloquent_javascript",
+  "version": "1.0.0",
+  "description": "Going through exercises in Eloquent Javascript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raydot/eloquent_javascript.git"
+  },
+  "keywords": [
+    "javascript",
+    "eloquent",
+    "code"
+  ],
+  "author": "Dave Kanter",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/raydot/eloquent_javascript/issues"
+  },
+  "homepage": "https://github.com/raydot/eloquent_javascript#readme",
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  },
+  "dependencies": {
+    "eslint-config-airbnb": "^18.0.1"
+  }
+}
