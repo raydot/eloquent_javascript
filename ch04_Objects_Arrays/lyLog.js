@@ -1,8 +1,8 @@
-//The Lycanthrope's Log
-//let journal = [];
+// The Lycanthrope's Log
+// let journal = [];
 
 // Using a fuller dataset...
-require("./journal.js");
+require('./journal.js');
 
 // function to add things to the journal
 function addEntry(events, squirrel) {
@@ -10,19 +10,19 @@ function addEntry(events, squirrel) {
 }
 
 // let's go ahead and add those things
-addEntry(["work", "touched tree", "pizza", "running", "television"], false);
+addEntry(['work', 'touched tree', 'pizza', 'running', 'television'], false);
 addEntry(
   [
-    "work",
-    "ice cream",
-    "cauliflower",
-    "lasagna",
-    "touched tree",
-    "brushed teeth"
+    'work',
+    'ice cream',
+    'cauliflower',
+    'lasagna',
+    'touched tree',
+    'brushed teeth',
   ],
   false
 );
-addEntry(["weekend", "cycling", "break", "peanuts", "beer"], true);
+addEntry(['weekend', 'cycling', 'break', 'peanuts', 'beer'], true);
 
 // This is the function that computes the phi coefficient from the array.  (see the book for the math formula)
 function phi(table) {
@@ -46,7 +46,7 @@ console.log(`phi:`, phi([76, 9, 4, 1]));
  */
 
 function tableFor(event, journal) {
-  let table = [0, 0, 0, 0];
+  const table = [0, 0, 0, 0];
 
   // old for-loopy way
   //   for (let i = 0; i < journal.length; i++) {
@@ -72,6 +72,7 @@ function tableFor(event, journal) {
 // by going over all the events and adding those that aren't already in there to the events array, the function collects every type of event.
 
 function journalEvents(journal) {
+  // O(N^2)!  Can we do better?
   let events = [];
   for (let entry of journal) {
     for (let event of entry.events)
@@ -82,8 +83,8 @@ function journalEvents(journal) {
   return events;
 }
 
-//console.log(tableFor("pizza", JOURNAL));
-//console.log(journalEvents(JOURNAL));
+// console.log(tableFor("pizza", JOURNAL));
+// console.log(journalEvents(JOURNAL));
 
 // Using all of the above we can see all of the correlations.
 for (let event of journalEvents(JOURNAL)) {
@@ -91,19 +92,19 @@ for (let event of journalEvents(JOURNAL)) {
   // Let's do some filtering:
   let correlation = phi(tableFor(event, JOURNAL));
   if (correlation > 0.1 || correlation < -0.1) {
-    console.log(event + ":", correlation);
+    console.log(event + ':', correlation);
   }
 }
 
-// This seems to indicate the strongest correlations are eating peanuts and brushing teeth.  Let's filter some more:
-
+// This seems to indicate the strongest correlations are eating peanuts and brushing teeth.
+// Let's filter some more:
 for (let entry of JOURNAL) {
   if (
-    entry.events.includes("peanuts") &&
-    !entry.events.includes("brushed teeth")
+    entry.events.includes('peanuts') &&
+    !entry.events.includes('brushed teeth')
   ) {
-    entry.events.push("peanut teeth");
+    entry.events.push('peanut teeth');
   }
 }
 
-console.log(`correlation:`, phi(tableFor("peanut teeth", JOURNAL)));
+console.log(`correlation:`, phi(tableFor('peanut teeth', JOURNAL)));

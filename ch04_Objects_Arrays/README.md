@@ -1,3 +1,1 @@
-# READ ME
-
-Or: can I put a readme file at the root of every directory?
+# Chapter 4: Data Structures, Objects and Arrays
