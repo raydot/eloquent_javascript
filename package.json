@@ -22,11 +22,14 @@
   },
   "homepage": "https://github.com/raydot/eloquent_javascript#readme",
   "devDependencies": {
-    "eslint": "^6.5.1",
+    "acorn": ">=7.1.1",
+    "eslint": "^7.1.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-plugin-import": "^2.18.2",
+    "minimist": ">=0.2.1"
   },
   "dependencies": {
-    "eslint-config-airbnb": "^18.0.1"
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3"
   }
 }
