@@ -33,11 +33,13 @@ let list = {
  * as an argument.  I've already cheated and gained the hint that it's easiest to start at the end.
  */
 
-const makeAList = (inputArray) => {
+const makeAList = (ia) => {
   //   let outputList = {
   //     value: inputArray.pop(),
   //     rest: null,
   //   };
+
+  inputArray = ia;
 
   // Grab last value and use it to get set up:
 
@@ -46,14 +48,21 @@ const makeAList = (inputArray) => {
     rest: null,
   };
 
-  let i;
-  let term = inputArray.length - 1;
+  //   let i;
+  //   let term = inputArray.length - 1;
 
   // Could do this with a while loop and pop.
-  for (i = term; i >= 0; i--) {
-    console.log('i:', i, ' array value:', inputArray[i]);
+  //   for (i = term; i >= 0; i--) {
+  //     console.log('i:', i, ' array value:', inputArray[i]);
+  //     outputList = {
+  //       value: inputArray[i],
+  //       rest: outputList,
+  //     };
+  //   }
+
+  while (inputArray.length > 0) {
     outputList = {
-      value: inputArray[i],
+      value: inputArray.pop(),
       rest: outputList,
     };
   }
