@@ -16,7 +16,7 @@ let arrays = [[1, 2, 3], [4, 5], [6]];
 
 const flattenArrays = (arrays) => {
   let outArray = [];
-  const reducer = (ac, currentValue) => outArray.concat(ac);
+  const reducer = (ac, currentValue) => outArray.push(currentValue);
   arrays.reduce(reducer);
   console.log(outArray);
 };
