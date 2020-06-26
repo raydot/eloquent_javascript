@@ -13,3 +13,7 @@ This chapter covers
 *   reduce (combine all elements in an array into a single value)
 *   some (tests whether any element matches a given predicate function)
 *   findIndex (finds the position of the first element that matches a predicate)
+
+## Bonus
+
+A [review](https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/) of arrow functions. 
