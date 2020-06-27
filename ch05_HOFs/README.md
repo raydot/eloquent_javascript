@@ -16,4 +16,4 @@ This chapter covers
 
 ## Bonus
 
-A [review](https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/) of arrow functions. 
+arrow-functions.js contains an interesting [review](https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/) of arrow functions. 

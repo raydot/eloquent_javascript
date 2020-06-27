@@ -6,10 +6,27 @@
  * the test function on the current loop value and stops it that
  * returns false.  Then it calls the body function, giving it
  * the current value.  Finally, it calls the update function to
- * create a new value and starts from the beginning.fail
+ * create a new value and starts from the beginning.
  *
  * loop(3, n => n > 0, n => n-1, console.log)
  * // 3
  * // 2
  * // 1
  */
+
+// This works!
+
+const loop = (value, testFunc, update, body) => {
+  console.log(value);
+  while (testFunc(value)) {
+    value = update(value);
+    body(value);
+  }
+};
+
+loop(
+  3,
+  (n) => n > 0,
+  (n) => n - 1,
+  console.log
+);
