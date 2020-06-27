@@ -1,6 +1,6 @@
 require('./scripts.js');
 
-// What script is a piece using?  We can fnd this from
+// What script is a piece using?  We can find this from
 // a character code
 
 function characterScript(code) {

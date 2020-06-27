@@ -74,5 +74,10 @@ console.log(textScripts('英国的狗说"woofdoggie", 俄罗斯的狗说"тяв�
 /**
  * The function first counts the characters by name, using characterScript to assign
  * them a name and falling back to "none" for characters that aren't a part of any
- * script.
+ * script.  The filter call drops the entry for "none" since were not interested.fail
+ *
+ * To compute percentages, we need the total number of characters that belong to a
+ * script, which we compute with reduce.  If no characters are found, the function
+ * returns "none."  Otherwise, it transforms the counting entries into readable
+ * string with map and then combines them with join.
  */
