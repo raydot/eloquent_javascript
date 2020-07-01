@@ -250,4 +250,59 @@ console.log(String(whiteRabbit));
 /**
  * SYMBOLS
  *
+ * It is possible for multiple interfaces to use the same property
+ * name for different things.  For example, an interface could be
+ * defined in which the toString method turns an object into a piece
+ * of yarn.  No object could conform to both the traditional toString()
+ * and the new interface.
+ *
+ * To this end, property usually strings, but can also be "symbols."
+ * Symbols are unique, and you can't use the same one twice.
  */
+
+let sym = Symbol('name');
+console.log(sym == Symbol('name'));
+// false
+RabbitClass.prototype[sym] = 55;
+console.log(whiteRabbit[sym]);
+// 55
+
+/**
+ * The string passed to Symbol is included when it's converted to a string
+ * and can make it easier to recognize a symbol (like when showing it in
+ * the console).  But it has no meaning beyond that.
+ *
+ * This makes symbols unique and usable as property names and make symbols
+ * suitable for defining interfaces that can peacefully live alongside
+ * other properties:
+ */
+
+const toStringSymbol = Symbol('toString');
+//Array.prototype[toStringSymbol] = () => { // Interesting mistake, I thought
+// I was being clever converting to an arrow function, but it returned un-
+// defined because arrow functions don't bind to 'this!'
+Array.prototype[toStringSymbol] = function () {
+  return `${this.length} cm of yellow yarn`;
+};
+
+console.log([1, 2].toString());
+// 1, 2
+console.log([1, 2][toStringSymbol]());
+// 2 cm of yellow yarn
+
+/**
+ * It is possible to include symbol properties in object expressions and
+ * classes by using square brackets around the property name.  This causes
+ * the property name to be evaluated, much like the square bracket property
+ * access notation, which allows reference to a binding that holds the
+ * symbol.
+ */
+
+let stringObject = {
+  [toStringSymbol]() {
+    return 'a length of jute rope';
+  },
+};
+
+console.log(stringObject[toStringSymbol]());
+// a length of jute rope
