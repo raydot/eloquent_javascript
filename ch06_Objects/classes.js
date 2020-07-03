@@ -300,9 +300,168 @@ console.log([1, 2][toStringSymbol]());
 
 let stringObject = {
   [toStringSymbol]() {
+    // square brackets property access notation
     return 'a length of jute rope';
   },
 };
 
 console.log(stringObject[toStringSymbol]());
 // a length of jute rope
+
+/**
+ * THE ITERATOR INTERFACE
+ *
+ * The object given to a for/of loop is expected to be iterable.  This means
+ * it has a method named with the Symbol.iterator symbol, which is stored
+ * as a property of the Symbol function.  When called, that method should return
+ * an object that provides a second interface, iterator.  This has a next method
+ * that returns the next result.  That result should be a object with a value
+ * property provides the next value, if there is one, and a done property which
+ * should be true if there are no more results and false otherwise.
+ *
+ * Next, value, and done are plain strings, not symbols.  Only Symbol.iterator
+ * is an actual symbol.  This can be used directly in the interface:
+ */
+
+// This seems to work quite a bit like how generators work?
+
+let okIterator = 'OK'[Symbol.iterator]();
+console.log(okIterator.next());
+//{ value: 'O', done: false }
+
+console.log(okIterator.next());
+//{ value: 'K', done: false }
+
+console.log(okIterator.next());
+//{ value: undefined, done: true }
+
+// Creation of an iterable data structure.  The matrix class is a 2d array:
+class Matrix {
+  constructor(width, height, element = (x, y) => undefined) {
+    // width, height, optional element function
+    // I don't understand this
+    this.width = width; // how does constructor get a this when it is an arrow function
+    this.height = height; // Oh, not the constructor's this but the class' this.
+    this.content = [];
+
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        this.content[y * width + x] = element(x, y);
+      }
+    }
+  }
+
+  get(x, y) {
+    return this.content[y * this.width + x];
+  }
+  set(x, y, value) {
+    this.content[y * this.width + x] = value;
+  }
+}
+
+// Iterator produces objects with x, y, and value properties
+class MatrixIterator {
+  constructor(matrix) {
+    this.x = 0;
+    this.y = 0;
+    this.matrix = matrix;
+  }
+
+  next() {
+    if (this.y == this.matrix.height) return { done: true };
+
+    let value = {
+      x: this.x,
+      y: this.y,
+      value: this.matrix.get(this.x, this.y),
+    };
+    this.x++;
+    if (this.x == this.matrix.width) {
+      this.x = 0;
+      this.y++;
+    }
+    return { value, done: false };
+  }
+}
+
+// This sets up the Matrix to be iterable.  Done separately for illustrative
+// purposes only.  This would normally just be declared in the class
+// itself.
+
+Matrix.prototype[Symbol.iterator] = function () {
+  return new MatrixIterator(this);
+};
+
+// Now we can loop the matrix with a for/of.
+
+let matrix = new Matrix(3, 3, (x, y) => `value ${x},${y}`);
+for (let { x, y, value } of matrix) {
+  console.log(x, y, value);
+}
+
+/**
+ * GETTERS, SETTERS, AND STATICS
+ * Interfaces often consist mostly of methods, but it's also ok to
+ * include properties that hold non-function values.  Map objects
+ * have a size property that tell how many keys are stored in them.
+ *
+ * It's not even necessary for this object to compute and store
+ * such a property directly in the instance.  Even properties that
+ * are accessed directly may hide a method call.  These methods
+ * are called getters, defined by writing "get" in front of the
+ * method name in an object expression or class declaration.
+ */
+
+let varyingSize = {
+  get size() {
+    return Math.floor(Math.random() * 100);
+  },
+};
+
+console.log(varyingSize.size);
+console.log(varyingSize.size);
+
+// A similar thing can be done when a property is written to, using
+// a setter.
+class Temperature {
+  // Values only stored in celsius
+  constructor(celsius) {
+    this.celsius = celsius;
+  }
+  get fahrenheit() {
+    return this.celsius * 1.8 + 32;
+  }
+  set fahrenheit(value) {
+    this.celsius = (value - 32) / 1.8;
+  }
+
+  // Allows the creation of a temp using fahrenheit
+  static fromFahrenheit(value) {
+    return new Temperature((value - 32) / 1.8);
+  }
+}
+let temp = new Temperature(22);
+console.log(temp.fahrenheit);
+// 71.6
+temp.fahrenheit = 86;
+console.log(temp.celsius);
+// 30
+
+/**
+ * The Temperature class reads and writes the temperature in either
+ * Celsius or Fahrenheit, but internally it stores only Celsius and
+ * automatically converts to and from Celsius in the fahrenheit
+ * setter and setter.
+ *
+ * Sometimes it's necessary to attache properties directly to the
+ * constructor, rather than the prototype.  Such methods wont have
+ * access to a class instance, but can be used, for example, to
+ * provide additional ways to create instances.
+ *
+ * Inside a class declaration, methods that have static before their
+ * names are stored on the constructor.  So the temperature class allows
+ * the uses of Temperature.fromFahrenheit(100) to create temperature
+ * using degrees fahrenheit.
+ *
+ *
+ */
