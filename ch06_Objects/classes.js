@@ -30,8 +30,8 @@ let protoRabbit = {
   },
 };
 let killerRabbit = Object.create(protoRabbit);
-killerRabbit.type = 'killer';
-killerRabbit.speak('SKRRRREEEEE!');
+killerRabbit.type = "killer";
+killerRabbit.speak("SKRRRREEEEE!");
 
 /**
  *  Javascript provides a way to make defining this type of function
@@ -49,7 +49,7 @@ Rabbit.prototype.speak = function (line) {
   console.log(`The ${this.type} rabbit says '${line}'`);
 };
 
-let weirdRabbit = new Rabbit('weird');
+let weirdRabbit = new Rabbit("weird");
 
 // Constructors (all functions) automatically get a property named
 // prototype, which holds a plan, empty object that derives from
@@ -96,8 +96,8 @@ class RabbitClass {
   }
 }
 
-let newKillerRabbit = new RabbitClass('killer');
-let whiteRabbit = new RabbitClass('white');
+let newKillerRabbit = new RabbitClass("killer");
+let whiteRabbit = new RabbitClass("white");
 
 /**
  * Right now, classes only allow methods to be added to the prototype,
@@ -111,7 +111,7 @@ let whiteRabbit = new RabbitClass('white');
 
 let object = new (class {
   getWord() {
-    return 'Hiya!';
+    return "Hiya!";
   }
 })();
 console.log(object.getWord());
@@ -125,10 +125,10 @@ console.log(object.getWord());
  * longer affect the object.
  */
 
-RabbitClass.prototype.teeth = 'small';
+RabbitClass.prototype.teeth = "small";
 console.log(newKillerRabbit.teeth);
 // small
-newKillerRabbit.teeth = 'Gory teeth.  Gory, gory teeth.';
+newKillerRabbit.teeth = "Gory teeth.  Gory, gory teeth.";
 console.log(newKillerRabbit.teeth);
 //'Gory teeth.  Gory, gory teeth.';
 console.log(whiteRabbit.teeth);
@@ -164,11 +164,11 @@ let ages = {
   Sammy: 32,
 };
 
-console.log(`Sammy is ${ages['Sammy']} years old.`);
+console.log(`Sammy is ${ages["Sammy"]} years old.`);
 //32
-console.log('Do we know how old Jugo is?', 'Jugo' in ages);
+console.log("Do we know how old Jugo is?", "Jugo" in ages);
 //false
-console.log("How about toString's age?", 'toString' in ages);
+console.log("How about toString's age?", "toString" in ages);
 // true
 /**
  * Because plain object derive from Object.prototype, toString is indeed
@@ -178,8 +178,8 @@ console.log("How about toString's age?", 'toString' in ages);
  */
 
 console.log(
-  'toString in Object.create(null)?',
-  'toString' in Object.create(null)
+  "toString in Object.create(null)?",
+  "toString" in Object.create(null)
 );
 
 /**
@@ -190,15 +190,15 @@ console.log(
  */
 
 let agesMap = new Map();
-agesMap.set('Tony', 55);
-agesMap.set('Prima', 21);
-agesMap.set('Bobby', 7);
+agesMap.set("Tony", 55);
+agesMap.set("Prima", 21);
+agesMap.set("Bobby", 7);
 
-console.log(`Tony is ${agesMap['Tony']} years old.`);
+console.log(`Tony is ${agesMap["Tony"]} years old.`);
 //32
-console.log('Do we know how old Sue is?', 'Sue' in agesMap);
+console.log("Do we know how old Sue is?", "Sue" in agesMap);
 //false
-console.log("How about toString's age?", 'toString' in agesMap);
+console.log("How about toString's age?", "toString" in agesMap);
 // false
 
 // The Map objects contains the methods set, get, and has.
@@ -210,9 +210,9 @@ console.log("How about toString's age?", 'toString' in agesMap);
 // in the prototype.  As an alternative to "in", used above, one can use
 // hasOwnProperty, which ignores the objects prototype.
 
-console.log({ x: 1 }.hasOwnProperty('x'));
+console.log({ x: 1 }.hasOwnProperty("x"));
 // true
-console.log({ x: 1 }.hasOwnProperty('toString'));
+console.log({ x: 1 }.hasOwnProperty("toString"));
 // false
 
 /**
@@ -260,8 +260,8 @@ console.log(String(whiteRabbit));
  * Symbols are unique, and you can't use the same one twice.
  */
 
-let sym = Symbol('name');
-console.log(sym == Symbol('name'));
+let sym = Symbol("name");
+console.log(sym == Symbol("name"));
 // false
 RabbitClass.prototype[sym] = 55;
 console.log(whiteRabbit[sym]);
@@ -277,7 +277,7 @@ console.log(whiteRabbit[sym]);
  * other properties:
  */
 
-const toStringSymbol = Symbol('toString');
+const toStringSymbol = Symbol("toString");
 //Array.prototype[toStringSymbol] = () => { // Interesting mistake, I thought
 // I was being clever converting to an arrow function, but it returned un-
 // defined because arrow functions don't bind to 'this!'
@@ -301,7 +301,7 @@ console.log([1, 2][toStringSymbol]());
 let stringObject = {
   [toStringSymbol]() {
     // square brackets property access notation
-    return 'a length of jute rope';
+    return "a length of jute rope";
   },
 };
 
@@ -325,7 +325,7 @@ console.log(stringObject[toStringSymbol]());
 
 // This seems to work quite a bit like how generators work?
 
-let okIterator = 'OK'[Symbol.iterator]();
+let okIterator = "OK"[Symbol.iterator]();
 console.log(okIterator.next());
 //{ value: 'O', done: false }
 
@@ -446,14 +446,15 @@ console.log(temp.fahrenheit);
 temp.fahrenheit = 86;
 console.log(temp.celsius);
 // 30
+console.log(Temperature.fromFahrenheit(100));
 
 /**
  * The Temperature class reads and writes the temperature in either
  * Celsius or Fahrenheit, but internally it stores only Celsius and
  * automatically converts to and from Celsius in the fahrenheit
- * setter and setter.
+ * setter and getter.
  *
- * Sometimes it's necessary to attache properties directly to the
+ * Sometimes it's necessary to attach properties directly to the
  * constructor, rather than the prototype.  Such methods wont have
  * access to a class instance, but can be used, for example, to
  * provide additional ways to create instances.
@@ -462,6 +463,63 @@ console.log(temp.celsius);
  * names are stored on the constructor.  So the temperature class allows
  * the uses of Temperature.fromFahrenheit(100) to create temperature
  * using degrees fahrenheit.
- *
- *
  */
+
+// INHERITANCE
+/**
+ * Extending the above matrix example to create a symmetric matrix
+ * using inheritance.
+ */
+
+class SymmetricMatrix extends Matrix {
+  constructor(size, element = (x, y) => undefined) {
+    // Does this mean take x,y and return undefined?
+    super(size, size, (x, y) => {
+      if (x < y) return element(y, x);
+      else return element(x, y);
+    });
+  }
+
+  set(x, y, value) {
+    super.set(x, y, value);
+    if (x != y) {
+      super.set(y, x, value);
+    }
+  }
+}
+
+let symMatrix = new SymmetricMatrix(5, (x, y) => `${x},${y}`);
+console.log(symMatrix.get(4, 1));
+
+/**
+ * The word 'extends' indicates that this class should be directly
+ * based on the default 'Object' prototype but on some other class.
+ * This is called the "superclass." The derived class is the "subclass."
+ *
+ * To initialize a SymmetricMatrix instance, the constructor calls its
+ * superclass's constructor through the "super" keyword.  This is necessary
+ * because if this new object is to behave (roughly) like a Matrix, it is
+ * going to need the instance properties that matrices have.  To ensure
+ * the matrix is symmetrical, the constructor wraps the "element" function
+ * to swap the coordinates for values below the diagonal.
+ *
+ * The "set" method uses "super" again, but this time not to call the
+ * constructor but to call a specific method from the superclass' set
+ * of methods.  We are redefining "set" but we do want to use the
+ * original behavior.  Because this.set refers to the *new* set method,
+ * calling that wouldn't work.  Inside class methods, "super" provides a way
+ * to call methods as they were defined in the superclass.
+ */
+
+// THE INSTANCEOF OPERATOR
+
+/**
+ * It is occasionally useful to know whether an object was derived from a
+ * specific class:
+ */
+
+console.log("instanceof:");
+console.log(new SymmetricMatrix(2) instanceof SymmetricMatrix);
+console.log(new SymmetricMatrix(3) instanceof Matrix);
+console.log(new Matrix(2, 2) instanceof SymmetricMatrix);
+console.log([1] instanceof Array);
